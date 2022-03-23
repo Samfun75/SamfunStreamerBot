@@ -6,8 +6,8 @@ This is a simple telegram bot to manage rtmps livestreams of telegram groups and
 
 - Pyrogram [View](https://github.com/pyrogram/pyrogram) - Telegram Client
 - Pymongo - Mongodb for python
-- FFmpeg - 
-- python-ffmpeg [View](https://github.com/jonghwanhyeon/python-ffmpeg)
+- FFmpeg - Audio/Video processor
+- python-ffmpeg [View](https://github.com/jonghwanhyeon/python-ffmpeg) - FFmpeg python wrapper
 
 ## Installation
 
