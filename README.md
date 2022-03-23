@@ -13,15 +13,11 @@ This is a simple telegram bot to manage rtmps livestreams of telegram groups and
 
 ### Heroku
 
-<br>
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Samfun75/SamfunStreamerBot)
-
 <br>
 
 ### Other systems
-
-<br>
 
 **Clone repository**
 
