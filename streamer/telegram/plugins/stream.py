@@ -17,7 +17,6 @@ async def stream_callback_handler(c: Client, cb: CallbackQuery):
         return
 
     stream_chat_id = int(params[0]) if len(params) > 0 else None
-    # stream_chat_id = -1001136881158
     msg_chat_id = int(params[1]) if len(params) > 1 else None
     msg_id = int(params[2]) if len(params) > 2 else None
     org_msg = await c.get_messages(msg_chat_id,
