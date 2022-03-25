@@ -7,7 +7,6 @@ TG_API_HASH = xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 # [bot-configuration]
 TG_BOT_TOKEN = 123456789:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 USER_SESSION = xxxxxxxxO81zdiac4IIl50EOPjXA-tMZuXyspL2cUvCeyHeu71TNelWHB9xxxxxxxxxxxxxx
-TG_DUSTBIN_CHAT = -100xxxxxxxxx
 ALLOWED_USERS = [123456789, 987654321]
 
 # [database]

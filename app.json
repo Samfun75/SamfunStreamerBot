@@ -27,10 +27,6 @@
             "description": "Get this value from https://my.telegram.org",
             "required": true
         },
-        "TG_DUSTBIN_CHAT": {
-            "description": "Watch this video to understand what the dustbin is: https://youtu.be/vgzMacnI5Z8",
-            "required": true
-        },
         "ALLOWED_USERS": {
             "description": "A list of users (user ids) allowed to use the bot. Please enter in the format [123123123, 321321321]",
             "required": true
