@@ -11,8 +11,8 @@ ENV PYTHONUNBUFFERED=1
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get install -y curl xz-utils && rm -rf /var/lib/apt/lists/*
 RUN curl https://johnvansickle.com/ffmpeg/builds/ffmpeg-git-amd64-static.tar.xz -L --silent --fail --retry 5 --retry-max-time 15 -o ffmpeg.tar.xz
-RUN tar xJf ffmpeg.tar.xz --strip-components=1
-RUN mv -f ffmpeg ffprobe /usr/local/bin/
+RUN tar xJf ffmpeg.tar.xz --strip-components=1 && rm -rf ffmpeg.tar.xz ffprobe
+RUN mv -f ffmpeg /usr/local/bin/
 
 # Install pip requirements
 COPY requirements.txt .
