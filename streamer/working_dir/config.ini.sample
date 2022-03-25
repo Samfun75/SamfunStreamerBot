@@ -10,13 +10,12 @@ root = streamer/telegram/plugins
 
 [bot-configuration]
 bot_token = 123456789:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-session = BookdlBot
-dustbin = -100xxxxxxxxx
+session = StreamerBot
 allowed_users = [123456789, 987654321]
 
 [database]
 db_host = xxxxxxxxxx.xxxxx.mongodb.net or whatever
 db_username = username
 db_password = password
-db_name = BookdlBot
+db_name = StreamerBot
 db_type = Mongo_Atlas (or Mongo_Community)
