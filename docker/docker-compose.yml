@@ -4,7 +4,7 @@ services:
   samfunstreamerbot:
     image: samfunstreamerbot
     build:
-      context: https://github.com/Samfun75/SamfunStreamerBot.git#dev
+      context: https://github.com/Samfun75/SamfunStreamerBot.git
     restart: on-failure
     env_file:
         - docker-config.ini

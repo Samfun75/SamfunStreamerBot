@@ -7,7 +7,7 @@ ENV PYTHONDONTWRITEBYTECODE=1
 # Turns off buffering for easier container logging
 ENV PYTHONUNBUFFERED=1
 
-# Install FFmpeg static builds
+# Install FFmpeg static builds, inspired from https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get install -y curl xz-utils && rm -rf /var/lib/apt/lists/*
 RUN curl https://johnvansickle.com/ffmpeg/builds/ffmpeg-git-amd64-static.tar.xz -L --silent --fail --retry 5 --retry-max-time 15 -o ffmpeg.tar.xz
