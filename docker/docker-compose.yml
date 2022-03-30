@@ -1,10 +1,11 @@
-version: '3.7'
+version: '3.8'
 
 services:
   samfunstreamerbot:
-    image: samfunstreamerbot
+    image: streamerbot
+    container_name: samfunstreamerbot
     build:
       context: https://github.com/Samfun75/SamfunStreamerBot.git
     restart: on-failure
     env_file:
-        - docker-config.ini
+      - docker-config.ini
