@@ -13,8 +13,9 @@ This is a simple telegram bot to manage rtmps livestreams of telegram groups and
 
 ### Docker
 
-Guide for installation using docker: [Instructions](docker/)
-<br>
+Guide for installation using docker:
+
+<a href="docker/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/docker/docker-original-wordmark.svg" alt="Docker Instructions" width="80" height="80"/> </a>
 
 ### Heroku
 
