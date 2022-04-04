@@ -41,7 +41,8 @@ class Stream:
             title = self.media_msg.video.file_name
         elif self.media_msg.document:
             title = self.media_msg.document.file_name
-        else:
+
+        if not title:
             title = 'Livestream'
 
         return title.replace('_', ' ')
@@ -49,12 +50,6 @@ class Stream:
     async def __prepare_stream(self):
         self.user_detail = await StreamerUsers().get_stream_loc(
             self.media_msg.from_user.id)
-        # self.user_detail = {
-        #     'name': 'Samfun',
-        #     'stream_url': 'stream_url1',
-        #     'stream_key': 'stream_key1',
-        #     'stream_chat_id': '-1001796252658'
-        # }
         self.ack_msg = await self.media_msg.reply_text(
             'Preparing Livestream...', quote=True)
         logger.info('Preparing Livestream...')
