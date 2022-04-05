@@ -41,20 +41,15 @@ class Stream:
             title = self.media_msg.video.file_name
         elif self.media_msg.document:
             title = self.media_msg.document.file_name
-        else:
+
+        if not title:
             title = 'Livestream'
 
         return title.replace('_', ' ')
 
     async def __prepare_stream(self):
         self.user_detail = await StreamerUsers().get_stream_loc(
-            self.media_msg.from_user.id)
-        # self.user_detail = {
-        #     'name': 'Samfun',
-        #     'stream_url': 'stream_url1',
-        #     'stream_key': 'stream_key1',
-        #     'stream_chat_id': '-1001796252658'
-        # }
+            self.media_msg.from_user.id, self.stream_chat_id)
         self.ack_msg = await self.media_msg.reply_text(
             'Preparing Livestream...', quote=True)
         logger.info('Preparing Livestream...')
@@ -224,25 +219,32 @@ class Stream:
         self.ffmpeg.add_listener('error', self.__on_error)
         self.ffmpeg.add_listener('stderr', self.__on_stderr)
         self.ffmpeg.add_listener('terminated', self.__on_terminate)
-        self.reader = asyncio.StreamReader()
+        self.reader = asyncio.StreamReader(loop=StreamerBot.loop)
         await self.__start_livestream()
         task = StreamerBot.loop.create_task(
             self.ffmpeg.execute(stream=self.reader))
 
         try:
             async for file_byte in body:
+
+                logger.info(f'Feeding {len(file_byte)} bytes to reader.')
                 if self.cancel.is_set():
                     break
                 if file_byte is not None:
                     self.reader.feed_data(file_byte)
+                    await self.ffmpeg._process.stdin.drain()
                 else:
                     self.reader.feed_eof()
                     break
+
             await task
-        except BrokenPipeError:
-            logger.info('BrokenPipeError Caught.')
+
         except Exception as e:
             logger.error(e)
+            if not self.ffmpeg._process.stdin.is_closing():
+                self.ffmpeg._process.stdin.close()
+            await self.ffmpeg._process.stdin.wait_closed()
+
         logger.info('All Streaming Processes Done!')
 
     def __on_terminate(self):
@@ -264,7 +266,6 @@ class Stream:
             StreamerBot.loop.create_task(
                 self.ack_msg.edit_text(text='Stream Terminated!',
                                        reply_markup=None))
-
             return
         if time.time() - self.time > 3:
             StreamerBot.loop.create_task(
