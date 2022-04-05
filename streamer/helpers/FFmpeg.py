@@ -49,7 +49,7 @@ class Stream:
 
     async def __prepare_stream(self):
         self.user_detail = await StreamerUsers().get_stream_loc(
-            self.media_msg.from_user.id)
+            self.media_msg.from_user.id, self.stream_chat_id)
         self.ack_msg = await self.media_msg.reply_text(
             'Preparing Livestream...', quote=True)
         logger.info('Preparing Livestream...')
