@@ -106,7 +106,7 @@ Note: bot only works in private mode
 
 ## Known Issue
 
-When bot is closed it might raise `ValueError: I/O operation on closed pipe asyncio` or `BrokenPipeError: [WinError 109] The pipe has been ended` or both for every livestream created and terminated. This only happens on Windows 10 afaik in my reseach. I don't think it happens to other systems but if I confirm othewise, I'll update the readme.
+~~When bot is closed it might raise `ValueError: I/O operation on closed pipe asyncio` or `BrokenPipeError: [WinError 109] The pipe has been ended` or both for every livestream created and terminated. This only happens on Windows 10 afaik in my reseach. I don't think it happens to other systems but if I confirm othewise, I'll update the readme.~~ This was indirectly caused by a memory leake from python-ffmpeg but it seems to be fixed now.
 
 Although this does not affect the bots functionality, it is pretty annoying when the log is flooded. **If anyone know how to fix that issue or even silence it please open a PR.**
 
